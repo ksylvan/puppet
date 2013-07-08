@@ -1,17 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# Vagrant::Config.run do |config|
-#   # set auto_update to false, if do NOT want to check the correct additions 
-#   # version when booting this machine
-#   master.vbguest.auto_update = false
-#   agent.vbguest.auto_update = false
-
-#   # do NOT download the iso file from a webserver
-#   master.vbguest.no_remote = true
-#   agent.vbguest.no_remote = true
-# end
-
 Vagrant.configure("2") do |config|
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
@@ -24,20 +13,24 @@ Vagrant.configure("2") do |config|
 
   # set auto_update to false, if do NOT want to check the correct additions 
   # version when booting this machine
-  #config.vbguest.auto_update = false
+  config.vbguest.auto_update = false
   # do NOT download the iso file from a webserver
-  #config.vbguest.no_remote = true
+  config.vbguest.no_remote = true
 
   # puppet master and agent
   config.vm.define :master do |master|
+    master.vm.hostname = "master"
     master.vm.network :private_network, ip: "10.0.4.4"
+    master.vm.provision :shell, :inline => "apt-get update --fix-missing"
     master.vm.provision :puppet do |puppet|
       puppet.manifests_path = "manifests/master"
       puppet.manifest_file = "init.pp"
     end
   end
   config.vm.define :agent do |agent|
+    agent.vm.hostname = "agent"
     agent.vm.network :private_network, ip: "10.0.4.5"
+    agent.vm.provision :shell, :inline => "apt-get update --fix-missing"
     agent.vm.provision :puppet do |puppet|
       puppet.manifests_path = "manifests/agent"
       puppet.manifest_file = "init.pp"

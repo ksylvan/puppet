@@ -24,3 +24,7 @@ ff02::2 ip6-allrouters
 10.0.4.5 agent\n"
 }
 
+package {
+	[ "puppet", "puppetmaster", "facter" ]:
+	ensure => present
+}
