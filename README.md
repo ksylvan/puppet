@@ -23,11 +23,13 @@ do this by running "vagrant plugin install vagrant-vbguest")
 When both VMs are up, do:
 
 $ vagrant ssh agent
+
 vagrant@agent:~$ /vagrant/initialize_agent.sh
 
 In another terminal, do:
 
 $ vagrant ssh master
+
 vagrant@master:~$ /vagrant/initialize_master.sh
 
 The result will be the sudo/ module will be applied to the agent (from the
