@@ -44,4 +44,4 @@ If you have the vagrant-vbguest plugin installed, and you don't want
 the auto-update to happen (to have the VMs start up faster), you can
 uncomment the config.vbguest lines in the Vagrantfile.
 
-**Kayvan Sylvan (kayvansylvan@gmail.com)**
+*Kayvan Sylvan (kayvansylvan@gmail.com)*
