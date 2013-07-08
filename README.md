@@ -23,24 +23,15 @@ do this by running "vagrant plugin install vagrant-vbguest")
 When both VMs are up, do:
 
 $ vagrant ssh agent
-vagrant@agent:~$ sudo puppet agent --verbose --no-daemonize --verbose \
-		 --onetime --server=master
+vagrant@agent:~$ /vagrant/initialize_agent.sh
 
 In another terminal, do:
 
 $ vagrant ssh master
-vagrant@master:~$ echo 'certname=master' >> /etc/puppet/puppet.conf
-vagrant@master:~$ sudo puppetca sign --all
+vagrant@master:~$ /vagrant/initialize_master.sh
 
-continuing on the master:
-
-vagrant@master:~$ sudo cp /vagrant/puppet/manifests/* /etc/puppet/manifests/
-vagrant@master:~$ sudo cp -r /vagrant/puppet/modules/sudo /etc/puppet/modules/
-vagrant@master:~$ sudo service puppetmaster restart
-
-On the agent, now:
-
-vagrant@agent:~$ sudo puppet agent --verbose --no-daemonize --verbose \
-		 --onetime --server=master
+The result will be the sudo/ module will be applied to the agent (from the
+puppet master machine) and you can see that by looking at /etc/sudoers
+on the agent machine.
 
 ---Kayvan Sylvan (kayvansylvan@gmail.com)
