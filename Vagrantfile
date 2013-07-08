@@ -8,14 +8,15 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "precise32"
+  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
   # Networking for these machines
   # config.vm.network :public_network
 
   # set auto_update to false, if do NOT want to check the correct additions 
   # version when booting this machine
-  config.vbguest.auto_update = false
+  #config.vbguest.auto_update = false
   # do NOT download the iso file from a webserver
-  config.vbguest.no_remote = true
+  #config.vbguest.no_remote = true
 
   # puppet master and agent
   config.vm.define :master do |master|
