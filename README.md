@@ -41,7 +41,9 @@ Virtualbox Guest Additions
 --------------------------
 
 If you have the vagrant-vbguest plugin installed, and you don't want
-the auto-update to happen (to have the VMs start up faster), you can
-uncomment the config.vbguest lines in the Vagrantfile.
+the auto-update to happen (to have the VMs start up faster), set the
+vbguest_auto_update variable in the Vagrantfile to false.
 
+
+---
 *Kayvan Sylvan (kayvansylvan@gmail.com)*
