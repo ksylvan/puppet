@@ -33,6 +33,9 @@ In another terminal, do:
     $ vagrant ssh master
     vagrant@master:~$ /vagrant/initialize_master.sh
 
+It is critical that the agent initialization be run first (so it can register
+itself as a client of the master).
+
 The result will be the sudo/ module will be applied to the agent (from the
 puppet master machine) and you can see that by looking at /etc/sudoers
 on the agent machine.
