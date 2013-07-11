@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 echo "=== Puppet Agent initialization..."
-if [ ! -r /vagrant/.agent ]
+if [ ! -r $HOME/.agent ]
 then
   echo sudo puppet agent --verbose --no-daemonize --verbose --onetime \
     --server=master
@@ -15,7 +15,7 @@ then
     --server=master
 
   sudo puppet agent --verbose --no-daemonize --verbose --onetime --server=master
-  touch /vagrant/.agent
+  touch $HOME/.agent
 else
   echo "Looks like agent has already been initialized."
   echo "Use the following command to do a one-time catalog run:"

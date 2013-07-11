@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 echo "=== Pupper Master initialization..."
-if [ ! -r /vagrant/.master ]
+if [ ! -r $HOME/.master ]
 then
   echo "=== setting certname to master..."
   sudo su -c 'echo "certname=master" >> /etc/puppet/puppet.conf'
@@ -12,7 +12,7 @@ then
   sudo cp /vagrant/puppet/manifests/* /etc/puppet/manifests/
   sudo cp -r /vagrant/puppet/modules/sudo /etc/puppet/modules/
   sudo service puppetmaster restart
-  touch /vagrant/.master
+  touch $HOME/.master
 else
   echo "Looks like the initialization of master has been run already."
   echo "Nothing to do."
